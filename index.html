@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile Screen UI</title>
+    <link rel="stylesheet" href="./style.css" />
+
+    <script
+      src="https://kit.fontawesome.com/e1605d1efe.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="mobile-container">
+      <div class="tic">
+        <div class="tic-child"></div>
+      </div>
+      <div class="heading-div">
+        <h1>Quiz Application</h1>
+      </div>
+
+      <div id="counter">
+        <div>
+          <i class="fa-solid fa-hourglass"></i>
+          <span id="timer">00:00</span>
+        </div>
+        <div class="question">
+          <span>Question 3 out Of 20</span>
+        </div>
+      </div>
+
+      <div class="main">
+        <div class="question-div">
+          <h2 class="q-number">Q1</h2>
+          <p class="Question">What is the capital of Pakistan?</p>
+        </div>
+        <ul>
+          <li>
+            <input type="radio" name="ans" id="ans1" value="" />
+            <label for="ans1" >Islamabad</label>
+          </li>
+          <li>
+            <input type="radio" name="ans" id="ans2" value="" />
+            <label for="ans2">Karachi</label>
+          </li>
+          <li>
+            <input type="radio" name="ans" id="ans3" value="" />
+            <label for="ans3">Lahore</label>
+          </li>
+          <li>
+            <input type="radio" name="ans" id="ans4" value="" />
+            <label for="ans4">Peshawar</label>
+          </li>
+        </ul>
+        <button id="next" type="submit">Next</button>
+      </div>
+    </div>
+
+    <!-- <script>
+        let countdownElement = document.getElementById('countdown');
+        let countdown = 30;
+        const timer = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = countdown;
+            if (countdown <= 0) {
+                clearInterval(timer);
+                countdownElement.textContent = "Time's up!";
+            }
+        }, 1000);
+    </script> -->
+  </body>
+</html>

@@ -96,3 +96,28 @@ li{
 
 
 }
+
+.score-div{
+  display: none;
+}
+.container{
+  display:none;
+}
+
+.start-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70%;
+  
+}
+.startquiz{
+ 
+  width: 120px;
+  height: 50px;
+  border-radius: 10px;
+}
+.score{
+  margin-top: 70%;
+  margin-left: 25%;
+}

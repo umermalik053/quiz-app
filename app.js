@@ -6,21 +6,24 @@ let scoreDiv = document.querySelector(".score-div");
 let scoreEl = document.querySelector(".score");
 let questionout = document.querySelector(".qustion-out-of")
 let questionNumber = document.querySelector(".q-number")
+let startDiv = document.querySelector(".start-div");
+let quiz = document.querySelector(".container");
+let restart = document.querySelector(".Restart_Quiz")
+let home = document.querySelector(".Home")
+
 
 
 let scores = 0;
 let currentQuestion = 0;
 
 
+const startQuizFunc = () => {
 
 
-startquiz.addEventListener("click", () => {
-
-
-  let startDiv = document.querySelector(".start-div");
+  
   startDiv.style.display = "none";
-  let quiz = document.querySelector(".container");
   quiz.style.display = "block";
+  scoreDiv.style.display = "none"
 
   questionout.innerHTML = `Question ${currentQuestion + 1} Out of ${quizQuestions.length - 1 }`
   questionNumber.innerHTML = `Question ${currentQuestion + 1}`
@@ -46,4 +49,15 @@ startquiz.addEventListener("click", () => {
     timer.innerHTML = `${min}:${sec}`;
   }, 1000);
 
-});
+}
+
+home.addEventListener("click" , ()=>{
+  scoreDiv.style.display = "none"
+  startDiv.style.display = "block";
+  startDiv.style.margin = " auto"
+
+
+})
+
+restart.addEventListener("click" , startQuizFunc)
+startquiz.addEventListener("click", startQuizFunc );

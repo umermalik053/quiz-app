@@ -36,14 +36,22 @@ const render = () => {
 
     if (i == 0) {
       option1.innerHTML = items;
+      document.getElementById('ans1').value = items;
     } else if (i == 1) {
       option2.innerHTML = items;
+      document.getElementById('ans2').value = items;
     } else if (i == 2) {
       option3.innerHTML = items;
+      document.getElementById('ans3').value = items;
     } else {
       option4.innerHTML = items;
+      document.getElementById('ans4').value = items;
     }
   }
+
+
+  
+
 
 
   questionout.innerHTML = `Question ${currentQuestion + 1} Out of ${
@@ -92,6 +100,23 @@ const deselectAll = () => {
 }
 
 next.addEventListener("click", () => {
+
+  const question = quizQuestions[currentQuestion];
+  const correctAnswer = question.correctAnswer;
+  let selectedAnswer;
+  
+  for (const answer of answers) {
+    if (answer.checked) {
+      selectedAnswer = answer.value;
+      break;
+    }
+  }
+
+  if (selectedAnswer === correctAnswer) {
+    scores++;
+  }
+
+
   if (currentQuestion < quizQuestions.length - 1) {
     currentQuestion++;
     deselectAll()
@@ -101,12 +126,20 @@ next.addEventListener("click", () => {
     quiz.style.display = "none";
     scoreEl.innerHTML = `Your score is ${scores}`;
   }
+
+
 });
+
+
+
+
 home.addEventListener("click", () => {
   scoreDiv.style.display = "none";
   startDiv.style.display = "block";
   startDiv.style.margin = " auto";
 });
+
+
 
 restart.addEventListener("click", startQuizFunc);
 startquiz.addEventListener("click", startQuizFunc);

@@ -121,19 +121,15 @@ li{
 }
 .score{
   margin-top: 70%;
-  margin-left: 25%;
+  margin-left: 20%;
+  font-size: 25px;
 }
 .scoreButton{
   margin-top: 20px;
-  margin-left: 20% ;
+  margin-left: 35% ;
   
 }
 .Home{
-  padding: 10px 25px;
-  border-radius: 10px;
-  font-size: 18px;
-}
-.Restart_Quiz{
   padding: 10px 25px;
   border-radius: 10px;
   font-size: 18px;

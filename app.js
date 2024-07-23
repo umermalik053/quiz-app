@@ -16,9 +16,49 @@ let option3 = document.querySelector("#option3");
 let option4 = document.querySelector("#option4");
 let answers = document.querySelectorAll(".answer");
 let next = document.querySelector("#next");
-
+let timer = document.querySelector("#timer");
 let scores = 0;
 let currentQuestion = 0;
+
+let interval;
+
+
+function time (){
+  let min = 3;
+  let sec = 59;
+
+interval = setInterval(() => {
+    if (min === 0 && sec === 0) {
+      let percent = (scores / (quizQuestions.length)) * 100;
+      let percentround = Math.round(percent);
+
+      if (percentround < 70) {
+        Swal.fire({
+          icon: "error",
+          title: "You Fail , Time's up!",
+          text: `Your Percentage is ${percentround}% `,
+        });
+      } else {
+        Swal.fire({
+          title: "Good! You Passed, Time's up!",
+          text: `You Percentage is ${percentround}% `,
+          icon: "success",
+        });
+      }
+
+      clearInterval(interval);
+      scoreDiv.style.display = "block";
+      quiz.style.display = "none";
+      scoreEl.innerHTML = `Your score is ${scores}<br><br>Percentage is ${percentround}%`;
+    } else if (sec === 0) {
+      min--;
+      sec = 59;
+    } else {
+      sec--;
+    }
+    timer.innerHTML = `${min}:${sec}`;
+  }, 1000);
+}
 
 const render = () => {
   let questionindex = quizQuestions[currentQuestion].question;
@@ -60,43 +100,7 @@ const startQuizFunc = () => {
     quizQuestions.length
   }`;
   questionNumber.innerHTML = `Question ${currentQuestion + 1}`;
-
-  let timer = document.querySelector("#timer");
-
-  let min = 1;
-  let sec = 59;
-
-  let interval = setInterval(() => {
-    if (min === 0 && sec === 0) {
-      let percent = (scores / (quizQuestions.length - 1)) * 100;
-      let percentround = Math.round(percent);
-
-      if (percentround < 70) {
-        Swal.fire({
-          icon: "error",
-          title: "You Fail , Time's up!",
-          text: `Your Percentage is ${percentround}% `,
-        });
-      } else {
-        Swal.fire({
-          title: "Good! You Passed, Time's up!",
-          text: `You Percentage is ${percentround}% `,
-          icon: "success",
-        });
-      }
-
-      clearInterval(interval);
-      scoreDiv.style.display = "block";
-      quiz.style.display = "none";
-      scoreEl.innerHTML = `Your score is ${scores}<br><br>Percentage is ${percentround}%`;
-    } else if (sec === 0) {
-      min--;
-      sec = 59;
-    } else {
-      sec--;
-    }
-    timer.innerHTML = `${min}:${sec}`;
-  }, 1000);
+  time()
 };
 
 const deselectAll = () => {
@@ -124,7 +128,7 @@ const nextFun = () => {
     deselectAll();
     render();
   } else {
-    let percent = (scores / (quizQuestions.length - 1)) * 100;
+    let percent = (scores / (quizQuestions.length)) * 100;
     let percentround = Math.round(percent);
     scoreDiv.style.display = "block";
     quiz.style.display = "none";
@@ -142,6 +146,7 @@ const nextFun = () => {
         icon: "success",
       });
     }
+    clearInterval(interval);
     currentQuestion = 0;
     scores = 0;
   }
